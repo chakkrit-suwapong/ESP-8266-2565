@@ -1,0 +1,383 @@
+#define BLYNK_PRINT Serial
+#define LED1 25
+#define LED2 26
+#define LED3 27
+#define LED4 14
+
+int count1=0;
+int count2=0;
+int count3=0;
+int count4=0;
+#include <WiFi.h>
+#include <WiFiClient.h>
+#include <BlynkSimpleEsp32.h>
+
+char auth[] = "qh-ZI0l_W7jjcyv-hZdQOZNqKGAjDKle";
+
+char ssid[] = "SMARTTECH_2.4GHz";
+char pass[] = "09341234810825230564";
+
+int Dat1;
+int Dat2;
+int Dat3;
+int Dat4;
+
+
+
+BLYNK_WRITE(V1)
+{
+Serial.print("Got a value: ");
+Serial.println(param.asInt());
+Dat1 = param.asInt();
+
+if(count1==0)
+{
+
+digitalWrite(LED1,HIGH);
+digitalWrite(LED2,HIGH);
+digitalWrite(LED3,HIGH);
+digitalWrite(LED4,HIGH);
+
+}
+
+
+
+if(Dat1==1)
+{
+  count1=count1+1;
+}
+
+if(count1==5)
+{
+  count1=1;
+}
+
+
+//SW1====================================
+if((Dat1 == 0)&&(count1==1)) {
+  
+digitalWrite(LED1,HIGH);
+digitalWrite(LED2,LOW);
+digitalWrite(LED3,LOW);
+digitalWrite(LED4,LOW);
+delay(250);
+
+}
+//=======================================
+
+if((Dat1 == 0)&&(count1==2)) {
+  
+digitalWrite(LED1,LOW);
+digitalWrite(LED2,HIGH);
+digitalWrite(LED3,LOW);
+digitalWrite(LED4,LOW);
+delay(250);
+
+}
+//===================================
+if((Dat1 == 0)&&(count1==3)) {
+  
+digitalWrite(LED1,LOW);
+digitalWrite(LED2,LOW);
+digitalWrite(LED3,HIGH);
+digitalWrite(LED4,LOW);
+delay(250);
+
+}
+
+
+
+//===================================
+if((Dat1 == 0)&&(count1==4)) {
+  
+digitalWrite(LED1,LOW);
+digitalWrite(LED2,LOW);
+digitalWrite(LED3,LOW);
+digitalWrite(LED4,HIGH);
+delay(250);
+
+
+}
+//SW1=====================
+if((Dat1 == 0)&&(count1==5)) {
+  count1=0;
+
+digitalWrite(LED1,LOW);
+digitalWrite(LED2,LOW);
+digitalWrite(LED3,LOW);
+digitalWrite(LED4,LOW);
+delay(250);
+
+
+}
+
+}
+
+
+
+BLYNK_WRITE(V2)
+{
+Serial.print("Got a value: ");
+Serial.println(param.asInt());
+Dat2 = param.asInt();
+if(Dat2==1)
+{
+  count2=count2+1;
+}
+
+if(count2==5)
+{
+  count2=1;
+}
+
+//SW2=====================
+if((Dat2 == 0)&&(count2==1)) {
+  
+digitalWrite(LED1,HIGH);
+digitalWrite(LED2,LOW);
+digitalWrite(LED3,LOW);
+digitalWrite(LED4,LOW);
+delay(250);
+
+}
+//=======================================
+
+if((Dat2 == 0)&&(count2==2)) {
+  
+digitalWrite(LED1,LOW);
+digitalWrite(LED2,HIGH);
+digitalWrite(LED3,LOW);
+digitalWrite(LED4,LOW);
+delay(250);
+
+}
+//===================================
+if((Dat2 == 0)&&(count2==3)) {
+  
+digitalWrite(LED1,LOW);
+digitalWrite(LED2,LOW);
+digitalWrite(LED3,HIGH);
+digitalWrite(LED4,LOW);
+delay(250);
+
+}
+
+
+
+//===================================
+if((Dat2 == 0)&&(count2==4)) {
+  
+digitalWrite(LED1,LOW);
+digitalWrite(LED2,LOW);
+digitalWrite(LED3,LOW);
+digitalWrite(LED4,HIGH);
+delay(250);
+
+
+}
+//SW2=====================
+if((Dat2 == 0)&&(count2==5)) {
+  count2=0;
+
+digitalWrite(LED1,LOW);
+digitalWrite(LED2,LOW);
+digitalWrite(LED3,LOW);
+digitalWrite(LED4,LOW);
+delay(250);
+
+
+}
+}
+
+BLYNK_WRITE(V3)
+{
+Serial.print("Got a value: ");
+Serial.println(param.asInt());
+Dat3 = param.asInt();
+if(Dat3==1)
+{
+  count3=count3+1;
+}
+
+if(count3==5)
+{
+  count3=1;
+}
+//SW3=====================
+
+if((Dat3 == 0)&&(count3==1)) {
+  
+digitalWrite(LED1,HIGH);
+digitalWrite(LED2,LOW);
+digitalWrite(LED3,LOW);
+digitalWrite(LED4,LOW);
+delay(250);
+
+}
+//=======================================
+
+if((Dat3 == 0)&&(count3==2)) {
+  
+digitalWrite(LED1,LOW);
+digitalWrite(LED2,HIGH);
+digitalWrite(LED3,LOW);
+digitalWrite(LED4,LOW);
+delay(250);
+
+}
+//===================================
+if((Dat3 == 0)&&(count3==3)) {
+  
+digitalWrite(LED1,LOW);
+digitalWrite(LED2,LOW);
+digitalWrite(LED3,HIGH);
+digitalWrite(LED4,LOW);
+delay(250);
+
+}
+
+
+
+//===================================
+if((Dat3 == 0)&&(count3==4)) {
+  
+digitalWrite(LED1,LOW);
+digitalWrite(LED2,LOW);
+digitalWrite(LED3,LOW);
+digitalWrite(LED4,HIGH);
+delay(250);
+
+
+}
+
+//SW3=====================
+if((Dat3 == 0)&&(count3==5)) {
+  count3=0;
+
+digitalWrite(LED1,LOW);
+digitalWrite(LED2,LOW);
+digitalWrite(LED3,LOW);
+digitalWrite(LED4,LOW);
+delay(250);
+
+
+}
+}
+
+BLYNK_WRITE(V4)
+{
+Serial.print("Got a value: ");
+Serial.println(param.asInt());
+Dat4 = param.asInt();
+
+if(Dat4==1)
+{
+  count4=count4+1;
+}
+
+if(count4==5)
+{
+  count4=1;
+}
+
+//SW4=====================
+if((Dat4 == 0)&&(count4==1)) {
+  
+digitalWrite(LED1,HIGH);
+digitalWrite(LED2,LOW);
+digitalWrite(LED3,LOW);
+digitalWrite(LED4,LOW);
+delay(250);
+
+}
+//=======================================
+
+if((Dat4 == 0)&&(count4==2)) {
+  
+digitalWrite(LED1,LOW);
+digitalWrite(LED2,HIGH);
+digitalWrite(LED3,LOW);
+digitalWrite(LED4,LOW);
+delay(250);
+
+}
+//===================================
+if((Dat4 == 0)&&(count4==3)) {
+  
+digitalWrite(LED1,LOW);
+digitalWrite(LED2,LOW);
+digitalWrite(LED3,HIGH);
+digitalWrite(LED4,LOW);
+delay(250);
+
+}
+
+
+
+//===================================
+if((Dat4 == 0)&&(count4==4)) {
+  
+digitalWrite(LED1,LOW);
+digitalWrite(LED2,LOW);
+digitalWrite(LED3,LOW);
+digitalWrite(LED4,HIGH);
+delay(250);
+
+
+}
+//SW4=====================
+
+if((Dat4== 0)&&(count4==5)) 
+{
+  count4=0;
+
+digitalWrite(LED1,LOW);
+digitalWrite(LED2,LOW);
+digitalWrite(LED3,LOW);
+digitalWrite(LED4,LOW);
+delay(250);
+
+
+}
+}
+
+
+
+
+
+
+//======================================
+//clear SW atate
+
+
+
+
+
+//====================================
+
+void setup()
+{
+// Debug console
+Serial.begin(9600);
+pinMode(LED1,OUTPUT);
+pinMode(LED2,OUTPUT);
+pinMode(LED3,OUTPUT);
+pinMode(LED4,OUTPUT);
+
+digitalWrite(LED1,HIGH);
+digitalWrite(LED2,HIGH);
+digitalWrite(LED3,HIGH);
+digitalWrite(LED4,HIGH);
+//Blynk.begin(auth, ssid, pass);
+// You can also specify server:
+Blynk.begin(auth, ssid, pass, "blynk-cloud.com", 8080); //49.229.108.138
+//Blynk.begin(auth, ssid, pass, IPAddress(49.229.108.138), 80);
+}
+
+
+void loop()
+{
+Blynk.run();
+
+}
+

@@ -1,0 +1,392 @@
+#define BLYNK_PRINT Serial
+#include <WiFi.h>
+#include <WiFiClient.h>
+#include <BlynkSimpleEsp32.h>
+
+char auth[] = "qh-ZI0l_W7jjcyv-hZdQOZNqKGAjDKle";
+
+char ssid[] = "SMARTTECH_2.4GHz";
+char pass[] = "09341234810825230564";
+
+#define LED1 25
+#define LED2 26
+#define LED3 27
+#define LED4 14
+#define SW1  34
+#define SW2  35
+#define SW3  32
+#define SW4  33
+int count1=0;
+int count2=0;
+int count3=0;
+int count4=0;
+
+int st_sw1=1;
+int st_sw2=1;
+int st_sw3=1;
+int st_sw4=1;
+int Dat1;
+int Dat2;
+int Dat3;
+int Dat4;
+void setup() {
+Serial.begin(9600);
+pinMode(LED1,OUTPUT);
+pinMode(LED2,OUTPUT);
+pinMode(LED3,OUTPUT);
+pinMode(LED4,OUTPUT);
+//pinMode(SW1,INPUT);
+//pinMode(SW2,INPUT);
+//pinMode(SW3,INPUT);
+//pinMode(SW4,INPUT);
+
+}
+
+
+
+//=================================
+//st_sw1 = digitalRead(SW1);
+//st_sw2 = digitalRead(SW2);
+//st_sw3 = digitalRead(SW3);
+//st_sw4 = digitalRead(SW4);
+BLYNK_WRITE(V1)
+{
+Serial.print("Got a value: ");
+Serial.println(param.asInt());
+Dat = param.asInt();
+
+
+if(st_sw1==0)
+{
+  count1=count1+1;
+  
+  
+}
+
+BLYNK_WRITE(V2)
+{
+Serial.print("Got a value: ");
+Serial.println(param.asInt());
+Dat = param.asInt();
+
+
+if(st_sw2==0)
+{
+  count2=count2+1;
+  
+  
+}
+
+BLYNK_WRITE(V3)
+{
+Serial.print("Got a value: ");
+Serial.println(param.asInt());
+Dat = param.asInt();
+
+
+
+if(st_sw3==0)
+{
+  count3=count3+1;
+ 
+  
+}
+
+
+BLYNK_WRITE(V4)
+{
+Serial.print("Got a value: ");
+Serial.println(param.asInt());
+Dat = param.asInt();
+
+if(st_sw4==0)
+{
+  count4=count4+1;
+  
+  
+}
+
+//===================================
+
+
+
+
+//SW1====================================
+if(count1==1) {
+  
+digitalWrite(LED1,HIGH);
+digitalWrite(LED2,LOW);
+digitalWrite(LED3,LOW);
+digitalWrite(LED4,LOW);
+delay(250);
+
+}
+//=======================================
+
+if(count1==2) {
+  
+digitalWrite(LED1,LOW);
+digitalWrite(LED2,HIGH);
+digitalWrite(LED3,LOW);
+digitalWrite(LED4,LOW);
+delay(250);
+
+}
+//===================================
+if(count1==3) {
+  
+digitalWrite(LED1,LOW);
+digitalWrite(LED2,LOW);
+digitalWrite(LED3,HIGH);
+digitalWrite(LED4,LOW);
+delay(250);
+
+}
+
+
+
+//===================================
+if(count1==4){
+  
+digitalWrite(LED1,LOW);
+digitalWrite(LED2,LOW);
+digitalWrite(LED3,LOW);
+digitalWrite(LED4,HIGH);
+delay(250);
+
+
+}
+
+
+//SW2=====================
+if(count2==1) {
+  
+digitalWrite(LED1,HIGH);
+digitalWrite(LED2,LOW);
+digitalWrite(LED3,LOW);
+digitalWrite(LED4,LOW);
+delay(250);
+
+}
+//=======================================
+
+if(count2==2){
+  
+digitalWrite(LED1,LOW);
+digitalWrite(LED2,HIGH);
+digitalWrite(LED3,LOW);
+digitalWrite(LED4,LOW);
+delay(250);
+
+}
+//===================================
+if(count2==3){
+  
+digitalWrite(LED1,LOW);
+digitalWrite(LED2,LOW);
+digitalWrite(LED3,HIGH);
+digitalWrite(LED4,LOW);
+delay(250);
+
+}
+
+
+
+//===================================
+if(count2==4){
+  
+digitalWrite(LED1,LOW);
+digitalWrite(LED2,LOW);
+digitalWrite(LED3,LOW);
+digitalWrite(LED4,HIGH);
+delay(250);
+
+
+}
+
+//SW3=====================
+
+if(count3==1) {
+  
+digitalWrite(LED1,HIGH);
+digitalWrite(LED2,LOW);
+digitalWrite(LED3,LOW);
+digitalWrite(LED4,LOW);
+delay(250);
+
+}
+//=======================================
+
+if(count3==2) {
+  
+digitalWrite(LED1,LOW);
+digitalWrite(LED2,HIGH);
+digitalWrite(LED3,LOW);
+digitalWrite(LED4,LOW);
+delay(250);
+
+}
+//===================================
+if(count3==3) {
+  
+digitalWrite(LED1,LOW);
+digitalWrite(LED2,LOW);
+digitalWrite(LED3,HIGH);
+digitalWrite(LED4,LOW);
+delay(250);
+
+}
+
+
+
+//===================================
+if(count3==4){
+  
+digitalWrite(LED1,LOW);
+digitalWrite(LED2,LOW);
+digitalWrite(LED3,LOW);
+digitalWrite(LED4,HIGH);
+delay(250);
+
+
+}
+//SW4=====================
+if(count4==1) {
+  
+digitalWrite(LED1,HIGH);
+digitalWrite(LED2,LOW);
+digitalWrite(LED3,LOW);
+digitalWrite(LED4,LOW);
+delay(250);
+
+}
+//=======================================
+
+if(count4==2) {
+  
+digitalWrite(LED1,LOW);
+digitalWrite(LED2,HIGH);
+digitalWrite(LED3,LOW);
+digitalWrite(LED4,LOW);
+delay(250);
+
+}
+//===================================
+if(count4==3) {
+  
+digitalWrite(LED1,LOW);
+digitalWrite(LED2,LOW);
+digitalWrite(LED3,HIGH);
+digitalWrite(LED4,LOW);
+delay(250);
+
+}
+
+
+
+//===================================
+if(count4==4) {
+  
+digitalWrite(LED1,LOW);
+digitalWrite(LED2,LOW);
+digitalWrite(LED3,LOW);
+digitalWrite(LED4,HIGH);
+delay(250);
+
+}
+//FOR 2 SW======================================
+//===================================
+if((count1 == 3)&&(count3==3)) {
+  
+digitalWrite(LED1,LOW);
+
+digitalWrite(LED3,LOW);
+
+delay(500);
+digitalWrite(LED1,HIGH);
+
+digitalWrite(LED3,HIGH);
+
+delay(500);
+
+
+}
+//======================================
+//===================================
+if((count2 == 3)&&(count4==3)) {
+  
+
+digitalWrite(LED2,LOW);
+
+digitalWrite(LED4,LOW);
+delay(500);
+digitalWrite(LED2,HIGH);
+
+digitalWrite(LED4,HIGH);
+delay(500);
+
+
+}
+//======================================
+
+//clear SW atate
+//SW1=====================
+if(count1==5) {
+  count1=0;
+
+digitalWrite(LED1,LOW);
+digitalWrite(LED2,LOW);
+digitalWrite(LED3,LOW);
+digitalWrite(LED4,LOW);
+delay(250);
+
+
+}
+//SW2=====================
+if(count2==5) {
+  count2=0;
+
+digitalWrite(LED1,LOW);
+digitalWrite(LED2,LOW);
+digitalWrite(LED3,LOW);
+digitalWrite(LED4,LOW);
+delay(250);
+
+
+}
+//SW3=====================
+if(count3==5) {
+  count3=0;
+
+digitalWrite(LED1,LOW);
+digitalWrite(LED2,LOW);
+digitalWrite(LED3,LOW);
+digitalWrite(LED4,LOW);
+delay(250);
+
+
+}
+//SW4=====================
+
+if(count4==5){
+  count4=0;
+
+digitalWrite(LED1,LOW);
+digitalWrite(LED2,LOW);
+digitalWrite(LED3,LOW);
+digitalWrite(LED4,LOW);
+delay(250);
+
+
+}
+
+//====================================
+
+
+void loop()
+{
+Blynk.run();
+
+}
+
+
